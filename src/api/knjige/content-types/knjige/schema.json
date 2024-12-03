@@ -1,0 +1,60 @@
+{
+  "kind": "collectionType",
+  "collectionName": "knjiges",
+  "info": {
+    "singularName": "knjige",
+    "pluralName": "knjiges",
+    "displayName": "knjige",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "knjigaId": {
+      "pluginOptions": {},
+      "type": "integer"
+    },
+    "razina": {
+      "pluginOptions": {},
+      "type": "string"
+    },
+    "invbroj": {
+      "pluginOptions": {},
+      "type": "integer"
+    },
+    "zbirka": {
+      "pluginOptions": {},
+      "type": "string"
+    },
+    "signatura": {
+      "pluginOptions": {},
+      "type": "string"
+    },
+    "skupina1": {
+      "pluginOptions": {},
+      "type": "string"
+    },
+    "skupina1a": {
+      "pluginOptions": {},
+      "type": "string"
+    },
+    "skupina2": {
+      "pluginOptions": {},
+      "type": "string"
+    },
+    "skupina4": {
+      "pluginOptions": {},
+      "type": "string"
+    },
+    "godina": {
+      "pluginOptions": {},
+      "type": "integer"
+    },
+    "isbn": {
+      "pluginOptions": {},
+      "type": "string"
+    }
+  }
+}

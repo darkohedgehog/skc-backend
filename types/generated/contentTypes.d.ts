@@ -520,6 +520,49 @@ export interface ApiExcelExcel extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiIzvestajiIzvestaji extends Struct.CollectionTypeSchema {
+  collectionName: 'izvestajis';
+  info: {
+    displayName: 'Izvestaji';
+    pluralName: 'izvestajis';
+    singularName: 'izvestaji';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::izvestaji.izvestaji'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiKnjigeKnjige extends Struct.CollectionTypeSchema {
   collectionName: 'knjiges';
   info: {
@@ -559,13 +602,12 @@ export interface ApiKnjigeKnjige extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiPublicationCategoryPublicationCategory
-  extends Struct.CollectionTypeSchema {
-  collectionName: 'publication_categories';
+export interface ApiStatutStatut extends Struct.CollectionTypeSchema {
+  collectionName: 'statuts';
   info: {
-    displayName: 'PublicationCategory';
-    pluralName: 'publication-categories';
-    singularName: 'publication-category';
+    displayName: 'Statut';
+    pluralName: 'statuts';
+    singularName: 'statut';
   };
   options: {
     draftAndPublish: true;
@@ -579,12 +621,6 @@ export interface ApiPublicationCategoryPublicationCategory
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    description: Schema.Attribute.Text &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -592,82 +628,7 @@ export interface ApiPublicationCategoryPublicationCategory
         };
       }>;
     locale: Schema.Attribute.String;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::publication-category.publication-category'
-    >;
-    publications: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::publication.publication'
-    >;
-    publishedAt: Schema.Attribute.DateTime;
-    slug: Schema.Attribute.UID<'title'> &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    title: Schema.Attribute.String &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiPublicationPublication extends Struct.CollectionTypeSchema {
-  collectionName: 'publications';
-  info: {
-    displayName: 'Publication';
-    pluralName: 'publications';
-    singularName: 'publication';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  pluginOptions: {
-    i18n: {
-      localized: true;
-    };
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    description: Schema.Attribute.Text &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    image: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios',
-      true
-    > &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    locale: Schema.Attribute.String;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::publication.publication'
-    >;
-    publication_category: Schema.Attribute.Relation<
-      'manyToOne',
-      'api::publication-category.publication-category'
-    >;
-    published: Schema.Attribute.Date &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::statut.statut'>;
     publishedAt: Schema.Attribute.DateTime;
     title: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
@@ -1193,9 +1154,9 @@ declare module '@strapi/strapi' {
       'api::blog.blog': ApiBlogBlog;
       'api::category.category': ApiCategoryCategory;
       'api::excel.excel': ApiExcelExcel;
+      'api::izvestaji.izvestaji': ApiIzvestajiIzvestaji;
       'api::knjige.knjige': ApiKnjigeKnjige;
-      'api::publication-category.publication-category': ApiPublicationCategoryPublicationCategory;
-      'api::publication.publication': ApiPublicationPublication;
+      'api::statut.statut': ApiStatutStatut;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

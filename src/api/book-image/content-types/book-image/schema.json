@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "book_images",
+  "info": {
+    "singularName": "book-image",
+    "pluralName": "book-images",
+    "displayName": "Book image"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "books": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::book.book",
+      "mappedBy": "book_image"
+    },
+    "image_file": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "image_type": {
+      "type": "string"
+    },
+    "position": {
+      "type": "biginteger"
+    }
+  }
+}

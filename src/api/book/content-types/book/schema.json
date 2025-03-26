@@ -32,14 +32,6 @@
       },
       "type": "string"
     },
-    "description": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "blocks"
-    },
     "year": {
       "pluginOptions": {
         "i18n": {
@@ -87,6 +79,14 @@
       },
       "type": "biginteger",
       "unique": true
+    },
+    "description": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "text"
     }
   }
 }
